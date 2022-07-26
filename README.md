@@ -1,13 +1,13 @@
-# vsc-nrf-sdk
+# lookMaNoCPU
 Pre-Requisites:
 - git installed
 - vscode installed, with plugins "Remote Containers", "Cortex-Debug"
 - docker installed
 
 How to use:
-1. "git clone https://github.com/stemschmidt/vsc-nrf-sdk.git"
-2. "cd vsc-nrf-sdk"
-3. "code ." or open vsc-nrf-sdk in VSCode
+1. "git clone https://github.com/stemschmidt/lookMaNoCPU.git"
+2. "cd lookMaNoCPU"
+3. "code ." or open lookMaNoCPU in VSCode
 4. in VSCode, select "reopen folder in container"
 5. after docker image is downloaded and started, go to "TERMINAL" tab:
 6. "west init -l application"
