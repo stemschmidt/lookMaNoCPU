@@ -1,7 +1,7 @@
 # Look ma, no CPU!!
 ## Demo-application for the Distributed Programmable Peripheral Interconnect (DPPI) in a Nordic nrf9160:
 
-The demo shows how peripherals in the nrf9160 can be connected with a publish/subscribe pattern in Hardware (DPPI). The CPU is only used to setup the periperals, the interaction between the peripheral happens without CPU interaction! No interrupts! Only events and tasks (https://infocenter.nordicsemi.com/topic/ps_nrf9160/gpiote.html).
+The demo shows how peripherals in the nrf9160 can be connected with a publish/subscribe pattern in Hardware (DPPI). The CPU is only used to setup the periperals, the interaction between the peripheral happens without CPU interaction! No interrupts! Only events and tasks (https://infocenter.nordicsemi.com/topic/ps_nrf9160/dppi.html).
 
 ### The periperals involved are:
 - a GPIO as input (Button 1 on the nrf9160dk)
