@@ -50,12 +50,10 @@ void main(void)
 	nrf_dppi_channels_enable(NRF_DPPIC, 0x00000003);
 
 	/*
-	If this is all set up, start the program in the debugger. Pause the execution and add the
-	receive_buffer to your watch window. Double-check that all entries in the array are 0x55.
-
-	Now press button_1. You will see that LED_4 lights up, although the CPU is still halted.
-	Now do a single step, to update the watch window: All entries up to 3 are now 0, from
-	4 on all remained at 0x55 -> that is the magic!!!
+		The while(1) loop at the end of main prints the content of the receive_buffer every second.
+		The buffer is initialized with 0x55. When button 1 is pressed on the nrf9160dk you will see LED4
+		light up and the log shows that the first four bytes are now 0xff (the value that is read by the
+		SPI with no external device attached)
 	*/
 	while(1){
 		k_msleep(1000);
