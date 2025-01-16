@@ -4,13 +4,13 @@
 The demo shows how peripherals in the nrf9160 can be connected with a publish/subscribe pattern in Hardware (DPPI). The CPU is only used to setup the periperals, the interaction between the peripheral happens without CPU interaction! No interrupts! Only events and tasks (https://infocenter.nordicsemi.com/topic/ps_nrf9160/dppi.html).
 
 ### The periperals involved are:
-- a GPIO as input (Button 1 on the nrf9160dk)
+- a GPIO as input (Button 1 on the nrf9160dk, would be connected to the interrupt pin of the external chip like an acceleration sensor)
 - a SPI-Master with a pre-defined configuration (number of bytes to read)
 - a GPIO as output to indicate the end of the transfer (LED4 on the nrf9160dk) 
 - the DPPI to connect the other peripherals
 
 ### Configuration
-The button-gpio is configured to detect a LowToHi transition to create an event
+The button-gpio is configured to detect a Low->Hi transition to create an event (instead of an interrupt!)
 ```
 nrf_gpio_cfg_input(BUTTON_1, NRF_GPIO_PIN_PULLUP);
 nrf_gpiote_event_configure(NRF_GPIOTE, INPUT_CONFIG_0, BUTTON_1, NRF_GPIOTE_POLARITY_LOTOHI);
@@ -21,7 +21,7 @@ The led-gpio task is configured to toggle the gpio
 nrf_gpiote_task_configure(NRF_GPIOTE, OUTPUT_CONFIG, LED_4, NRF_GPIOTE_POLARITY_TOGGLE, 0);
 nrf_gpiote_task_enable(NRF_GPIOTE, OUTPUT_CONFIG);
 ```
-The SPI-Master task is configured to read 4 bytes into the receive_buffer
+The SPI-Master task is configured to read 4 bytes into the receive_buffer (this could be the full read from the sensor)
 ```
 nrf_spim_frequency_set(NRF_SPIM0, NRF_SPIM_FREQ_2M);
 nrf_spim_rx_buffer_set(NRF_SPIM0, receive_buffer, 4); // setup buffer and data to be read
